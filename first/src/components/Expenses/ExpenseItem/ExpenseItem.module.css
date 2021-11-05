@@ -9,10 +9,6 @@
     background-color: #4b4b4b;
 }
 
-.expenseDateBox{
-    text-align: center;
-}
-
 .expenseItemDescription {
     display: flex;
     flex-direction: column;
