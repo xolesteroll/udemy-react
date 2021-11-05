@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Expenses.module.css'
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
+import Card from "../UI/Card/Card";
 
 const Expenses = ({expenses}) => {
     const showExpenses = () => {
@@ -12,9 +13,9 @@ const Expenses = ({expenses}) => {
     }
 
     return (
-        <div className={styles.expenses}>
+        <Card className={styles.expenses}>
             {showExpenses()}
-        </div>
+        </Card>
     );
 };
 
