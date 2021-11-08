@@ -6,7 +6,7 @@ import Card from "../UI/Card/Card";
 const Expenses = ({expenses}) => {
     const showExpenses = () => {
         const expensesArr = expenses.map((e, i) => {
-            return <ExpenseItem key={e.id} title={e.title} price={e.price} date={e.date} />
+            return <ExpenseItem key={e.id} title={e.title} amount={e.amount} date={e.date} />
         })
 
         return expensesArr
