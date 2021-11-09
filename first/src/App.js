@@ -1,5 +1,4 @@
 import Expenses from "./components/Expenses/Expenses";
-import NewExpense from "./components/NewExpense/NewExpense";
 import {useState} from "react";
 
 
@@ -12,7 +11,9 @@ const App = () => {
         {id: 4, title: 'Never WInter', amount: 23.45, date: new Date(2021, 8, 21)},
     ])
 
-    const addNewExpense = (dataObj) => {
+    const [year, setYear] = useState('')
+
+    const addNewExpenseHandler = (dataObj) => {
         setExpenses((prevState) => {
             return [
                 ...prevState,
@@ -21,10 +22,19 @@ const App = () => {
         })
     }
 
+    const filterByYearHandler = (e) => {
+        const year = e.target.value
+        setYear(year)
+    }
+
   return (
     <div className="App">
-        <NewExpense addNewExpense={addNewExpense} />
-        <Expenses expenses={expenses}/>
+        <Expenses
+            expenses={expenses}
+            year={year}
+            addNewExpense={addNewExpenseHandler}
+            filterByYear={filterByYearHandler}
+        />
     </div>
   )
 }

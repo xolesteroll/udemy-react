@@ -1,6 +1,9 @@
 .expensesFilter {
     color: white;
     padding: 0 1rem;
+    width: 50rem;
+    max-width: 95%;
+    margin: 0 auto;
 }
 
 .expensesFilterControl {
