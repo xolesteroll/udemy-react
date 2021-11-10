@@ -1,32 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './Expenses.module.css'
-import ExpenseItem from "./ExpenseItem/ExpenseItem";
 import Card from "../UI/Card/Card";
 import NewExpense from "../NewExpense/NewExpense";
 import ExpenseFilter from "../ExpensesFilter/ExpensesFilter";
+import ExpensesList from "./ExpensesList/ExpensesList";
 
-const Expenses = ({addNewExpense, expenses, filterByYear, year}) => {
+const Expenses = ({addNewExpense, expenses}) => {
 
-    const showExpenses = (year) => {
+    const [year, setYear] = useState('')
 
-        if (year) {
-
-            return expenses.filter(e => +year === e.date.getFullYear())
-                .map(e => <ExpenseItem key={e.id} title={e.title} amount={e.amount} date={e.date} />)
-
-        }
-
-        const expensesArr = expenses.map(e => <ExpenseItem key={e.id} title={e.title} amount={e.amount} date={e.date} />)
-
-        return expensesArr
-
+    const filterByYearHandler = (e) => {
+        const year = e.target.value
+        setYear(year)
     }
 
     return (
         <Card className={styles.expenses}>
             <NewExpense addNewExpense={addNewExpense} />
-            <ExpenseFilter filterByYear={filterByYear} year={year}/>
-            {showExpenses(year)}
+            <ExpenseFilter filterByYear={filterByYearHandler} year={year}/>
+            <ExpensesList items={expenses} year={year}/>
         </Card>
     );
 };

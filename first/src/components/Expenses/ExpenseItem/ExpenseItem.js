@@ -13,14 +13,14 @@ const ExpenseItem = ({title, amount, date}) => {
 
 
     return (
-        <div className={styles.expenseItem}>
+        <li className={styles.expenseItem}>
             <ExpenseDate date={date} />
             <div className={styles.expenseItemDescription}>
                 <h2>{stateTitle}</h2>
                 <div className={styles.expenseItemPrice}>{`$${amount}`}</div>
             </div>
             <button onClick={changeTitleOnClickHandler}>Change Title</button>
-        </div>
+        </li>
     );
 };
 
