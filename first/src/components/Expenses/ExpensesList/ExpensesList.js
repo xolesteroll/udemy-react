@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ExpenseItem from "../ExpenseItem/ExpenseItem";
-import InfoMessage from "../../InfoMessage/InfoMessage";
+import InfoMessage from "../../UI/InfoMessage/InfoMessage";
 import styles from "./ExpensesList.module.css"
 
 const ExpensesList = ({items, year}) => {

@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './NewExpense.module.css'
 import NewExpenseForm from "./NewExpenseForm/NewExpenseForm";
 
-const NewExpense = ({onClickShowForm, showForm, addNewExpense}) => {
+const NewExpense = ({addNewExpense}) => {
+
+    const [editMode, setEditMode] = useState(false)
+
+    const toggleEditModeHandler = () => {
+        setEditMode((prevState) => !prevState)
+    }
+
+
     return (
         <div className={styles.newExpense}>
             {
-                showForm ?
-                    <NewExpenseForm addNewExpense={addNewExpense} onClickShowForm={onClickShowForm}/> :
-                    <button className={styles.soloBtn} onClick={onClickShowForm}>Add Expense</button>
+                editMode ?
+                    <NewExpenseForm addNewExpense={addNewExpense} onClickShowForm={toggleEditModeHandler}/> :
+                    <button className={styles.soloBtn} onClick={toggleEditModeHandler}>Add Expense</button>
             }
         </div>
     );

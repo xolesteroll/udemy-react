@@ -45,7 +45,7 @@ const NewExpenseForm = ({addNewExpense, onClickShowForm}) => {
             enteredAmount: '',
             enteredDate: ''
         })
-
+        onClickShowForm()
     }
 
     return (

@@ -1,11 +1,11 @@
 import Expenses from "./components/Expenses/Expenses";
 import {useState} from "react";
-import {DUMMY_DATA} from "./dummy-db/db"
+import db from "./dummy-db/db"
 
 
 const App = () => {
 
-    const [expenses, setExpenses] = useState(DUMMY_DATA)
+    const [expenses, setExpenses] = useState(db)
 
     const addNewExpenseHandler = (dataObj) => {
         setExpenses((prevState) => {
