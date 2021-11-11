@@ -3,9 +3,9 @@ import React, {useState} from 'react';
 import styles from './NewExpenseForm.module.css'
 import NewExpensesControls from "./NewExpensesControls/NewExpensesControls";
 
-const NewExpenseForm = (props) => {
+const NewExpenseForm = ({addNewExpense, onClickShowForm}) => {
 
-    // const [enteredTitle, setEnteredTitle] = useState('')
+    // const [enteredTitle, setEnteredTitle] = useState('')   тоже вариант
     // const [enteredAmount, setEnteredAmount] = useState(null)
     // const [enteredDate, setEnteredDate] = useState('')
 
@@ -15,7 +15,6 @@ const NewExpenseForm = (props) => {
         enteredDate: ''
     })
 
-    const [showForm, setShowForm] = useState(true)
 
     const titleChangeHandler = (e) => {
         // setUserInput({...userInput, enteredTitle: e.target.value})
@@ -38,7 +37,7 @@ const NewExpenseForm = (props) => {
             date: new Date(userInput.enteredDate)
         }
         // add new expense in global state
-        props.addNewExpense(expenseData)
+        addNewExpense(expenseData)
 
         // clear form inputs using nulling the state
         setUserInput({
@@ -57,8 +56,8 @@ const NewExpenseForm = (props) => {
                 amountChangeHandler={amountChangeHandler}
                 dateChangeHandler={dateChangeHandler}/>
             <div className={styles.newExpenseActions}>
-                {showForm && <button>Cancel</button>}
-                <button type={showForm ? "submit" : ""}>Add Expense</button>
+                <button onClick={onClickShowForm} type="button">Cancel</button>
+                <button type="submit">Add Expense</button>
             </div>
         </form>
     );

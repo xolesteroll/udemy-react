@@ -9,14 +9,25 @@ const Expenses = ({addNewExpense, expenses}) => {
 
     const [year, setYear] = useState('')
 
+    const [showForm, setShowForm] = useState(false)
+
+
     const filterByYearHandler = (e) => {
         const year = e.target.value
         setYear(year)
     }
 
+    const onClickShowFormHandler = () => {
+        setShowForm(!showForm)
+    }
+
     return (
         <Card className={styles.expenses}>
-            <NewExpense addNewExpense={addNewExpense} />
+            <NewExpense
+                addNewExpense={addNewExpense}
+                onClickShowForm={onClickShowFormHandler}
+                showForm={showForm}
+            />
             <ExpenseFilter filterByYear={filterByYearHandler} year={year}/>
             <ExpensesList items={expenses} year={year}/>
         </Card>

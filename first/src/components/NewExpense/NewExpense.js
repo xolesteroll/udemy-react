@@ -2,10 +2,14 @@ import React from 'react';
 import styles from './NewExpense.module.css'
 import NewExpenseForm from "./NewExpenseForm/NewExpenseForm";
 
-const NewExpense = (props) => {
+const NewExpense = ({onClickShowForm, showForm, addNewExpense}) => {
     return (
         <div className={styles.newExpense}>
-            <NewExpenseForm addNewExpense={props.addNewExpense} />
+            {
+                showForm ?
+                    <NewExpenseForm addNewExpense={addNewExpense} onClickShowForm={onClickShowForm}/> :
+                    <button className={styles.soloBtn} onClick={onClickShowForm}>Add Expense</button>
+            }
         </div>
     );
 };

@@ -20,6 +20,10 @@
     margin-right: 1rem;
 }
 
+.soloBtn {
+    margin: 0 auto;
+}
+
 .newExpense button:hover,
 .newExpense button:active {
     background-color: #510674;
