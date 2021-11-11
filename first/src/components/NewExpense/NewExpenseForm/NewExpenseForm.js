@@ -33,7 +33,7 @@ const NewExpenseForm = ({addNewExpense, onClickShowForm}) => {
         e.preventDefault()
         const expenseData = {
             title: userInput.enteredTitle,
-            amount: userInput.enteredAmount,
+            amount: +userInput.enteredAmount,
             date: new Date(userInput.enteredDate)
         }
         // add new expense in global state

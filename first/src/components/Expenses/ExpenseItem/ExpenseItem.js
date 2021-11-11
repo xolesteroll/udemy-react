@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ExpenseItem.module.css';
 import ExpenseDate from "./ExpenseDate/ExpenseDate";
 
 const ExpenseItem = ({title, amount, date}) => {
 
-    const [stateTitle, setStateTitle] = useState(title)
+    // const [stateTitle, setStateTitle] = useState(title)
 
     // const changeTitleOnClickHandler = () => {
     //     setStateTitle('Updated')
@@ -16,7 +16,7 @@ const ExpenseItem = ({title, amount, date}) => {
         <li className={styles.expenseItem}>
             <ExpenseDate date={date} />
             <div className={styles.expenseItemDescription}>
-                <h2>{stateTitle}</h2>
+                <h2>{title}</h2>
                 <div className={styles.expenseItemPrice}>{`$${amount}`}</div>
             </div>
             {/*<button onClick={changeTitleOnClickHandler}>Change Title</button>*/}
