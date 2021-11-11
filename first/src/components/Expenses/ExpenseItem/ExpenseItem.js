@@ -6,10 +6,10 @@ const ExpenseItem = ({title, amount, date}) => {
 
     const [stateTitle, setStateTitle] = useState(title)
 
-    const changeTitleOnClickHandler = () => {
-        setStateTitle('Updated')
-        console.log(stateTitle)
-    }
+    // const changeTitleOnClickHandler = () => {
+    //     setStateTitle('Updated')
+    //     console.log(stateTitle)
+    // }
 
 
     return (
@@ -19,7 +19,7 @@ const ExpenseItem = ({title, amount, date}) => {
                 <h2>{stateTitle}</h2>
                 <div className={styles.expenseItemPrice}>{`$${amount}`}</div>
             </div>
-            <button onClick={changeTitleOnClickHandler}>Change Title</button>
+            {/*<button onClick={changeTitleOnClickHandler}>Change Title</button>*/}
         </li>
     );
 };
