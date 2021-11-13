@@ -19,7 +19,7 @@ const ExpenseItem = ({title, amount, date}) => {
                 <h2>{title}</h2>
                 <div className={styles.expenseItemPrice}>{`$${amount}`}</div>
             </div>
-            {/*<button onClick={changeTitleOnClickHandler}>Change Title</button>*/}
+            {/*<Button onClick={changeTitleOnClickHandler}>Change Title</Button>*/}
         </li>
     );
 };
