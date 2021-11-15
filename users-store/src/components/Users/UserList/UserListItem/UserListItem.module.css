@@ -1,0 +1,35 @@
+.listItem {
+    position: relative;
+    padding: 5px 10px;
+    margin: 10px 0;
+    border: 1px solid #000000;
+}
+
+.listItemControls {
+    visibility: hidden;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.deleteBtn, .editBtn {
+    cursor: pointer;
+    background: #8b005d;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 2px 5px;
+    margin: 0 5px;
+}
+
+.editBtn {
+    background: #7a87d2;
+
+}
+
+.listItem:hover .listItemControls {
+    visibility: visible;
+}

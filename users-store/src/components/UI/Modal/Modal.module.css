@@ -1,0 +1,31 @@
+.modal {
+    cursor: default;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+    width: 100%;
+    min-height: 20vh;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 0 auto;
+    background: #ffffff;
+}
+
+.modalBtn {
+    float: right;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        max-width: 90%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .modalMessage {
+        text-align: center;
+    }
+}
