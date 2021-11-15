@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-import styles from './Users.module.css'
+import db from "../../db/db";
 import UsersForm from "./UsersForm/UsersForm";
 import UsersList from "./UserList/UsersList";
-import db from "../../db/db";
+import styles from './Users.module.css'
 
 const Users = (props) => {
 
@@ -25,6 +25,8 @@ const Users = (props) => {
 
     const updateUserInfoHandler = ((id, name, age) => {
         const editedList = users.map(u => u.id === id ? {id: id, name: name, age: age} : u)
+        console.log(editedList)
+        console.log('sdadad')
         setUsers([
             ...editedList
         ])

@@ -20,19 +20,46 @@ const UsersForm = (props) => {
         setValidationMessage(message)
     }
 
-    const setDataOnSubmit = (e) => {
-        e.preventDefault()
+    const validator = () => {
         if (!value.name || !value.age) {
-            return showValidationMessage('Fields cannot be empty')
+            showValidationMessage('Fields cannot be empty')
+            return false
         }
         if (value.name.length > 30) {
-            return showValidationMessage('User\'s name cannot contain more than 30 letters')
+            showValidationMessage('User\'s name cannot contain more than 30 letters')
+            return false
         }
         if (value.age > 150 || value.age < 12) {
-            return showValidationMessage('User\'s age is invalid, please enter a valid number')
+            showValidationMessage('User\'s age is invalid, please enter a valid number')
+            return false
         }
+        return true
+    }
 
+
+    const setDataOnSubmit = (e) => {
+
+        e.preventDefault()
+        if (!validator()) {
+            validator()
+            return
+        }
         props.onSubmitHandler(value)
+        setValue({
+            name: "",
+            age: ""
+        })
+    }
+
+    const updateUserOnSubmit = (e) => {
+        console.log(validator())
+
+        e.preventDefault()
+        if (!validator()) {
+            validator()
+            return
+        }
+        props.updateUser(props.id, value.name, value.age)
         setValue({
             name: "",
             age: ""
@@ -47,7 +74,7 @@ const UsersForm = (props) => {
     return (
         <form className="usersForm" onSubmit={
             props.editForm ?
-                () => props.updateUser(props.id, value.name, value.age) :
+                updateUserOnSubmit :
                 setDataOnSubmit
         }>
             {
