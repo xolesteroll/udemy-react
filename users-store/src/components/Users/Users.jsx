@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 
-import db from "../../db/db";
+import {USERS_LIST} from "../../db/db";
 import UsersForm from "./UsersForm/UsersForm";
 import UsersList from "./UserList/UsersList";
 import styles from './Users.module.css'
 
 const Users = (props) => {
 
-    const [users, setUsers] = useState(db)
+    const [users, setUsers] = useState(USERS_LIST)
 
-    const addUserHandler = ((data) => {
+    const addUserHandler = ((name, age) => {
         setUsers([
-            {id: Math.random(), ...data},
+            {id: Math.random(), name, age},
             ...users]
         )
     })

@@ -4,6 +4,8 @@ import UsersFormControls from "./UsersFormControls/UsersFormControls";
 import {onFormFieldValueChangeHandler} from "../../../utils/utils"
 import ModalOverlay from "../../UI/ModalOverlay/ModalOverlay";
 import Modal from "../../UI/Modal/Modal";
+import {ERROR_MESSAGES} from "../../../db/db"
+import {validate} from "../../../utils/utils"
 
 const UsersForm = (props) => {
     const [value, setValue] = useState(props.value || {
@@ -18,69 +20,43 @@ const UsersForm = (props) => {
     const showValidationMessage = (message) => {
         setShowModal(true)
         setValidationMessage(message)
+        return false
     }
 
-    const validator = () => {
-        if (!value.name || !value.age) {
-            showValidationMessage('Fields cannot be empty')
-            return false
-        }
-        if (value.name.length > 30) {
-            showValidationMessage('User\'s name cannot contain more than 30 letters')
-            return false
-        }
-        if (value.age > 150 || value.age < 12) {
-            showValidationMessage('User\'s age is invalid, please enter a valid number')
-            return false
-        }
-        return true
-    }
-
-
-    const setDataOnSubmit = (e) => {
-
-        e.preventDefault()
-        if (!validator()) {
-            validator()
-            return
-        }
-        props.onSubmitHandler(value)
-        setValue({
-            name: "",
-            age: ""
-        })
-    }
-
-    const updateUserOnSubmit = (e) => {
-        console.log(validator())
-
-        e.preventDefault()
-        if (!validator()) {
-            validator()
-            return
-        }
-        props.updateUser(props.id, value.name, value.age)
-        setValue({
-            name: "",
-            age: ""
-        })
-    }
-
-    const modalCloseHandler = () => {
+    const hideValidationMessage = () => {
         setShowModal(false)
         setValidationMessage('')
     }
 
+    const setDataOnSubmit = (e, callback, args) => {
+        e.preventDefault()
+
+        if ((validate(value)) === true) {
+            callback(...args)
+            setValue({
+                name: "",
+                age: ""
+            })
+        } else {
+            showValidationMessage(ERROR_MESSAGES[validate(value)])
+        }
+    }
+
     return (
-        <form className="usersForm" onSubmit={
-            props.editForm ?
-                updateUserOnSubmit :
-                setDataOnSubmit
-        }>
+        <form
+            className="usersForm"
+            onSubmit={
+                props.editForm ?
+                    (e) =>
+                        setDataOnSubmit(e, props.updateUser, [props.id, value.name, value.age]) :
+                    (e) =>
+                        setDataOnSubmit(e, props.onSubmitHandler, [value.name, value.age])
+
+            }>
             {
                 showModal &&
-                <ModalOverlay hideOverlay={modalCloseHandler}>
-                    <Modal message={validationMessage} closeModal={modalCloseHandler}/>
+                <ModalOverlay hideOverlay={hideValidationMessage}>
+                    <Modal message={validationMessage} closeModal={hideValidationMessage}/>
                 </ModalOverlay>
             }
 
