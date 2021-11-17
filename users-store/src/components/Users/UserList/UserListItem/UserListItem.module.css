@@ -16,13 +16,19 @@
     align-items: center;
 }
 
+.listItemControls button:hover {
+    transform: scale(0.95);
+}
+
 .deleteBtn, .editBtn {
     cursor: pointer;
+    transition: transform 0.1s;
     background: #8b005d;
     color: #ffffff;
     font-size: 12px;
     padding: 2px 5px;
     margin: 0 5px;
+    border: 1px solid #000000;
 }
 
 .editBtn {

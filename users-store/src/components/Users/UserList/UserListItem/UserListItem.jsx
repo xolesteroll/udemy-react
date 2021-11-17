@@ -17,8 +17,8 @@ const UserListItem = ({id, value, removeItem, updateUser, children}) => {
             {!editMode && children}
             {!editMode &&
                 <div className={styles.listItemControls}>
-                    <span className={styles.editBtn} onClick={() => setEditMode(true)}>Edit</span>
-                    <span className={styles.deleteBtn} onClick={() => removeItem(id)}>Delete</span>
+                    <button className={styles.editBtn} onClick={() => setEditMode(true)}>Edit</button>
+                    <button className={styles.deleteBtn} onClick={() => removeItem(id)}>Delete</button>
                 </div>
             }
         </li>
