@@ -2,7 +2,7 @@ import styles from './UsersFormControls.module.css'
 
 const UsersFormControls = (props) => {
 
-    const classes = `${props.className} ${styles.formControls}`
+    const classes = `${props.className ? props.className + ' ': ''}${styles.formControls}`
 
     return (
         <div className={classes}>

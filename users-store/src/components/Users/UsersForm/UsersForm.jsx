@@ -3,9 +3,10 @@ import Button from "../../UI/Button/Button";
 import UsersFormControls from "./UsersFormControls/UsersFormControls";
 import {onFormFieldValueChangeHandler} from "../../../utils/utils"
 import ModalOverlay from "../../UI/ModalOverlay/ModalOverlay";
-import Modal from "../../UI/Modal/Modal";
 import {ERROR_MESSAGES} from "../../../db/db"
 import {validate} from "../../../utils/utils"
+
+import styles from './UsersForm.module.css'
 
 const UsersForm = (props) => {
     const [value, setValue] = useState(props.value || {
@@ -44,7 +45,7 @@ const UsersForm = (props) => {
 
     return (
         <form
-            className="usersForm"
+            className={styles.usersForm}
             onSubmit={
                 props.editForm ?
                     (e) =>
@@ -54,10 +55,7 @@ const UsersForm = (props) => {
 
             }>
             {
-                showModal &&
-                <ModalOverlay hideOverlay={hideValidationMessage}>
-                    <Modal message={validationMessage} closeModal={hideValidationMessage}/>
-                </ModalOverlay>
+                showModal && <ModalOverlay message={validationMessage} hideModal={hideValidationMessage} />
             }
 
             <UsersFormControls
@@ -74,7 +72,7 @@ const UsersForm = (props) => {
                     onFormFieldValueChangeHandler(e, 'age', setValue)
                 }}
                 label="Age (Years)"/>
-            <Button className="usersFormBtn" type="submit">{props.buttonText}</Button>
+            <Button className={styles.usersFormBtn} type="submit">{props.buttonText}</Button>
         </form>
     );
 };
