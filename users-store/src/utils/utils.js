@@ -16,7 +16,7 @@ export const validate = (value) => {
     if (value.name.length > 30) {
         return 1
     }
-    if (value.age > 150 || value.age < 12) {
+    if (+value.age > 150 || +value.age < 12) {
         return 2
     }
     return true

@@ -24,9 +24,7 @@ const Users = (props) => {
     })
 
     const updateUserInfoHandler = ((id, name, age) => {
-        const editedList = users.map(u => u.id === id ? {id: id, name: name, age: age} : u)
-        console.log(editedList)
-        console.log('sdadad')
+        const editedList = users.map(u => u.id === id ? {...u, name: name, age: age} : u)
         setUsers([
             ...editedList
         ])
