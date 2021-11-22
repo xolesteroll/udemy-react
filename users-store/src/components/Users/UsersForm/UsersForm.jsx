@@ -43,19 +43,23 @@ const UsersForm = (props) => {
         }
     }
 
+    const setDataOnEditArgs = props.editForm ?
+        [props.id, value.name, value.age] :
+        [value.name, value.age]
+
+    const setDataOnEditCallback = props.editForm ?
+        props.updateUser :
+        props.onSubmitHandler
+
     return (
         <form
             className={styles.usersForm}
             onSubmit={
-                props.editForm ?
-                    (e) =>
-                        setDataOnSubmit(e, props.updateUser, [props.id, value.name, value.age]) :
-                    (e) =>
-                        setDataOnSubmit(e, props.onSubmitHandler, [value.name, value.age])
-
+                (e) =>
+                    setDataOnSubmit(e, setDataOnEditCallback, setDataOnEditArgs)
             }>
             {
-                showModal && <ModalOverlay message={validationMessage} hideModal={hideValidationMessage} />
+                showModal && <ModalOverlay message={validationMessage} hideModal={hideValidationMessage}/>
             }
 
             <UsersFormControls
