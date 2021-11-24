@@ -2,7 +2,12 @@ import React from 'react';
 
 import classes from './Input.module.css'
 
-const Input = ({label, input, ...props}) => {
+const Input = React.forwardRef(({
+                                    label,
+                                    input,
+                                    ...props
+                                },
+                                ref) => {
 
     const concatClasses = props.className ? `${props.className} ${classes.input}` : classes.input
 
@@ -11,9 +16,9 @@ const Input = ({label, input, ...props}) => {
             <label htmlFor={input.name}>
                 {label}
             </label>
-            <input {...input}/>
+            <input ref={ref} {...input}/>
         </div>
     );
-};
+});
 
 export default Input;
