@@ -8,10 +8,6 @@ section {
   border-radius: 12px;
 }
 
-input, textarea {
-  padding: 0 10px;
-}
-
 button {
   font: inherit;
   cursor: pointer;
