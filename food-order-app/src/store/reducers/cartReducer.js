@@ -20,6 +20,7 @@ const cartReducer = (state, action) => {
 
                 updatedItems = [...state.items]
                 updatedItems[existingCartIteIndex] = updatedItem
+                console.log(state.items)
             } else {
                 updatedItems = state.items.concat(action.item)
             }
@@ -48,8 +49,11 @@ const cartReducer = (state, action) => {
                 totalAmount: updatedItems.length > 0 ? updatedTotalAmount : 0
             }
         }
+        case 'CLEAR': {
+            return initialState
+        }
         default: {
-            return state
+            return initialState
         }
     }
 }

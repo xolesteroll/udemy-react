@@ -5,6 +5,7 @@ import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartContext/CartProvider";
 
+
 function App() {
     const [showCart, setShowCart] = useState(false)
 
@@ -15,6 +16,9 @@ function App() {
     const hideCartHandler = () => {
         setShowCart(false)
     }
+
+
+
 
     return (
         <CartProvider>

@@ -23,6 +23,14 @@ const DUMMY_MEALS = [
         description: 'Healthy...and green...',
         price: 18.99,
     },
+    {
+        id: 'm5',
+        name: 'Some Uneatable shit',
+        description: 'not Healthy...and green...',
+        price: 99.99,
+    },
 ];
+
+console.log(JSON.stringify(DUMMY_MEALS))
 
 export default DUMMY_MEALS
