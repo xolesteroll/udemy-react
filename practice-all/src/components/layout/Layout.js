@@ -1,11 +1,13 @@
 import React from 'react';
 import MainNavigation from "./MainNavigation";
 
+import s from './Layout.module.css'
+
 const Layout = ({children}) => {
     return (
         <>
             <MainNavigation />
-            <main>
+            <main className={s.main}>
                 {children}
             </main>
         </>
