@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import MeetupList from "../../components/meetups/MeetupList";
 
 const DUMMY_MEETUPS = [
@@ -27,9 +27,16 @@ const DUMMY_MEETUPS = [
 ]
 
 const Meetups = () => {
+    const [loadedMeetups, setLoadedMeetups] = useState([])
+
+    useEffect(() => {
+        // send request
+        setLoadedMeetups(DUMMY_MEETUPS)
+    }, [])
+
     return (
         <>
-            <MeetupList meetups={DUMMY_MEETUPS} />
+            <MeetupList meetups={loadedMeetups} />
         </>
     );
 };
