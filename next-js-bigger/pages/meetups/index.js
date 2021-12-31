@@ -26,19 +26,36 @@ const DUMMY_MEETUPS = [
 
 ]
 
-const Meetups = () => {
-    const [loadedMeetups, setLoadedMeetups] = useState([])
-
-    useEffect(() => {
-        // send request
-        setLoadedMeetups(DUMMY_MEETUPS)
-    }, [])
+const Meetups = (props) => {
 
     return (
         <>
-            <MeetupList meetups={loadedMeetups} />
+            <MeetupList meetups={props.meetups} />
         </>
     );
 };
+
+// export const getStaticProps = () => { // prerender this page on server and fetching data to it
+//     // some logic
+//     return {
+//         props: {
+//             meetups: DUMMY_MEETUPS
+//         },
+//         revalidate: 1  //seconds to re pre render from next
+//     }
+// }
+
+export const getServerSideProps = (context) => { // the difference is that this one not runs on build, but always runs after deployment
+    //any logic will run on server
+
+    const req = context.req // we use this function is we need these(req, res) and if we need it to be regenerated on every request
+    const res = context.res
+
+    return {
+        props: {
+            meetups: DUMMY_MEETUPS
+        }
+    }
+}
 
 export default Meetups;
